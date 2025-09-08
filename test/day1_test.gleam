@@ -6,7 +6,7 @@ pub fn solve_test() {
 }
 
 pub fn solve2_test() {
-  assert day1.solve_day2() == 0
+  assert day1.solve_day2() == 19_437_052
 }
 
 pub fn list_test() {
