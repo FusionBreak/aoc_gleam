@@ -3,7 +3,7 @@ import gleam/list
 import gleam/string
 import simplifile
 
-pub fn solve_day1() -> Int {
+pub fn solve1() -> Int {
   let input = parse("input/day1_1.txt")
   let left = input |> list.map(fn(p) { p.0 })
   let right = input |> list.map(fn(p) { p.1 })
@@ -15,7 +15,7 @@ pub fn solve_day1() -> Int {
   |> list.fold(0, fn(sum, current) { sum + current })
 }
 
-pub fn solve_day2() -> Int {
+pub fn solve2() -> Int {
   let input = parse("input/day1_2.txt")
   let left = input |> list.map(fn(p) { p.0 })
   let right = input |> list.map(fn(p) { p.1 })
