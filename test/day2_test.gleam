@@ -8,7 +8,7 @@ pub fn solve1_test() {
 }
 
 pub fn solve2_test() {
-  assert day2.solve2() == 0
+  assert day2.solve2() == 589
   //578 is too low.
   //592 is too high.
 }
