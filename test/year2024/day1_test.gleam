@@ -1,4 +1,4 @@
-import day1
+import year2024/day1
 
 pub fn solve_test() {
   assert day1.solve1() == 1_882_714

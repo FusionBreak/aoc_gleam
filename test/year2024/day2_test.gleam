@@ -1,7 +1,7 @@
-import day2
 import gleam/io
 import gleam/list
 import gleam/string
+import year2024/day2
 
 pub fn solve1_test() {
   assert day2.solve1() == 549
