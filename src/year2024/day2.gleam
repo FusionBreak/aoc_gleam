@@ -9,7 +9,7 @@ pub type IsSafe {
 }
 
 pub fn solve1() -> Int {
-  let input = parse("input/day2_1.txt")
+  let input = parse("input/2024/day2_1.txt")
 
   input
   |> list.map(calc_distances)
@@ -18,7 +18,7 @@ pub fn solve1() -> Int {
 }
 
 pub fn solve2() -> Int {
-  let input = parse("input/day2_2.txt")
+  let input = parse("input/2024/day2_2.txt")
 
   input
   |> list.map(with_tolerance)
