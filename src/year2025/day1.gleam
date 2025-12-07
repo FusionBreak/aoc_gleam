@@ -59,7 +59,7 @@ pub fn count_zeros(rotations: List(Rotation), starting_point: Int) {
     rotations
     |> list.map_fold(starting_point, fn(current_position, i) {
       let new_position = rotate(i, current_position)
-      let passing_zeros = count_passing_zeros(i, starting_point)
+      let passing_zeros = count_passing_zeros(i, current_position)
 
       #(new_position, #(new_position, passing_zeros))
     })
@@ -73,17 +73,20 @@ pub fn count_zeros(rotations: List(Rotation), starting_point: Int) {
 
 pub fn count_passing_zeros(rotation: Rotation, starting_point: Int) {
   case rotation.direction {
-    Left ->
-      starting_point
-      |> int.add(rotation.number)
-      |> int.floor_divide(100)
-      |> result.unwrap(0)
-      |> int.subtract(1)
-    Right ->
-      starting_point
-      |> int.add(rotation.number)
-      |> int.floor_divide(100)
-      |> result.unwrap(0)
+    Left -> {
+      let start_val = starting_point - 1
+      let end_val = starting_point - rotation.number - 1
+      let start_div = start_val |> int.floor_divide(100) |> result.unwrap(0)
+      let end_div = end_val |> int.floor_divide(100) |> result.unwrap(0)
+      start_div - end_div
+    }
+    Right -> {
+      let end_val = starting_point + rotation.number
+      let start_div =
+        starting_point |> int.floor_divide(100) |> result.unwrap(0)
+      let end_div = end_val |> int.floor_divide(100) |> result.unwrap(0)
+      end_div - start_div
+    }
   }
 }
 

@@ -6,10 +6,7 @@ pub fn solve1_test() {
 }
 
 pub fn solve2_test() {
-  day1.solve2() |> should.equal(0)
-  //5175 is too low
-  //7076 is too high
-  //6024 also not right
+  day1.solve2() |> should.equal(6295)
 }
 
 pub fn rotate_test() {
@@ -47,10 +44,22 @@ pub fn count_zeros_test() {
 }
 
 pub fn count_passing_zeros_test() {
-  day1.count_passing_zeros(day1.Rotation(day1.Right, 5), 5) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 1), 99) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 1), 0) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 100), 0) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 50), 50) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 49), 50) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 200), 0) |> should.equal(2)
+
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 1), 1) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 1), 0) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 100), 0) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 50), 50) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 49), 50) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 200), 0) |> should.equal(2)
   day1.count_passing_zeros(day1.Rotation(day1.Right, 105), 5) |> should.equal(1)
   day1.count_passing_zeros(day1.Rotation(day1.Right, 95), 5) |> should.equal(1)
   day1.count_passing_zeros(day1.Rotation(day1.Left, 205), 95) |> should.equal(2)
   day1.count_passing_zeros(day1.Rotation(day1.Left, 100), 95) |> should.equal(1)
-  day1.count_passing_zeros(day1.Rotation(day1.Left, 195), 95) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 195), 95) |> should.equal(2)
 }
