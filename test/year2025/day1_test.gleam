@@ -27,7 +27,7 @@ pub fn rotate_test() {
   day1.rotate(day1.Rotation(day1.Left, 68), 50) |> should.equal(82)
 }
 
-pub fn count_passing_zeros_test() {
+pub fn count_zeros_test() {
   let result =
     [
       day1.Rotation(day1.Left, 68),
@@ -41,7 +41,16 @@ pub fn count_passing_zeros_test() {
       day1.Rotation(day1.Right, 14),
       day1.Rotation(day1.Left, 82),
     ]
-    |> day1.count_passing_zeros(50)
+    |> day1.count_zeros(50)
 
   result.0 |> should.equal(3)
+}
+
+pub fn count_passing_zeros_test() {
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 5), 5) |> should.equal(0)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 105), 5) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Right, 95), 5) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 205), 95) |> should.equal(2)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 100), 95) |> should.equal(1)
+  day1.count_passing_zeros(day1.Rotation(day1.Left, 195), 95) |> should.equal(1)
 }

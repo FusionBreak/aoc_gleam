@@ -19,7 +19,7 @@ pub fn solve1() {
 
   let result =
     rotations
-    |> count_passing_zeros(starting_point)
+    |> count_zeros(starting_point)
 
   result.0
 }
@@ -30,9 +30,9 @@ pub fn solve2() {
 
   let result =
     rotations
-    |> count_passing_zeros(starting_point)
+    |> count_zeros(starting_point)
 
-  TODO
+  result.1
 }
 
 pub fn rotate(rotation: Rotation, position: Int) {
@@ -54,12 +54,12 @@ pub fn rotate(rotation: Rotation, position: Int) {
   }
 }
 
-pub fn count_passing_zeros(rotations: List(Rotation), starting_point: Int) {
+pub fn count_zeros(rotations: List(Rotation), starting_point: Int) {
   let zeros =
     rotations
     |> list.map_fold(starting_point, fn(current_position, i) {
       let new_position = rotate(i, current_position)
-      let passing_zeros = TODO
+      let passing_zeros = count_passing_zeros(i, starting_point)
 
       #(new_position, #(new_position, passing_zeros))
     })
@@ -69,6 +69,22 @@ pub fn count_passing_zeros(rotations: List(Rotation), starting_point: Int) {
     zeros.1 |> list.map(fn(x) { x.1 }) |> list.fold(0, int.add)
 
   #(ending_zeros, passing_zeros)
+}
+
+pub fn count_passing_zeros(rotation: Rotation, starting_point: Int) {
+  case rotation.direction {
+    Left ->
+      starting_point
+      |> int.add(rotation.number)
+      |> int.floor_divide(100)
+      |> result.unwrap(0)
+      |> int.subtract(1)
+    Right ->
+      starting_point
+      |> int.add(rotation.number)
+      |> int.floor_divide(100)
+      |> result.unwrap(0)
+  }
 }
 
 fn parse(path: String) {
